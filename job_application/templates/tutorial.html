@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<h1 class="mt-4 mb-4">Django Admin Tutorial</h1>
+{% for image in images %}
+<img src="{% static image %}">
+{% endfor %}
+{% endblock %}

@@ -1,8 +1,10 @@
+import os
 from django.shortcuts import render
 from .common import  ApplicationForm
 from .models import Form
 from django.contrib import messages
 from django.core.mail import EmailMessage
+from mysite import  settings
 
 def index(request):
     if request.method == 'POST':
@@ -27,3 +29,9 @@ def index(request):
             messages.success(request,"Form submitted successfully!")
 
     return render(request,'index.html')
+
+def tutorial(request):
+    path = settings.STATICFILES_DIRS[0]
+    img_list = os.listdir(path)
+    context = {"images": img_list}
+    return render(request, 'tutorial.html', context)
